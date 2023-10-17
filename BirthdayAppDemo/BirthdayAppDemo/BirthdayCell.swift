@@ -30,7 +30,7 @@ struct BirthdayCell: View {
                 .font(.title2)
                 .lineLimit(2)
                 .foregroundColor(.white)
-                .padding(.leading, 20)
+                .padding(.leading, 10)
                 
             
             Spacer()

@@ -34,7 +34,8 @@ struct BirthdayList: View {
                     ForEach(self.birthdayVM.birthdays.indices, id: \.self) {idx in
                         ZStack {
                             BirthdayCell(birthdayVM: self.birthdayVM.birthdays[idx]).shadow(radius: 10)
-                            
+                               
+
                             NavigationLink(destination:
                                 UpdateBirthdayView(bdayVM: self.birthdayVM.birthdays[idx])
                                 .navigationBarTitle("")
@@ -51,6 +52,7 @@ struct BirthdayList: View {
                         .listRowBackground(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .leading, endPoint: .trailing))
                 }.listRowSeparator(.hidden)
                     .scrollContentBackground(.hidden)
+                    .padding(-30)
             }.onAppear {
                 self.refreshData()
             }
