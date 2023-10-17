@@ -1,11 +1,4 @@
-///**
-/**
 
-BirthdayAppDemo
-CREATED BY:  DEVTECHIE INTERACTIVE, INC. ON 6/21/20
-COPYRIGHT (C) DEVTECHIE, DEVTECHIE INTERACTIVE, INC
-
-*/
 import SwiftUI
 import UIKit
 import CoreData

@@ -1,11 +1,3 @@
-///**
-/**
- 
- BirthdayAppDemo
- CREATED BY:  DEVTECHIE INTERACTIVE, INC. ON 6/25/20
- COPYRIGHT (C) DEVTECHIE, DEVTECHIE INTERACTIVE, INC
- 
- */
 
 import UIKit
 
