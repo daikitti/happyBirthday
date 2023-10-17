@@ -13,6 +13,7 @@ class BirthdayListViewModel: ObservableObject {
     
     func fetchAllBirthdays() {
         self.birthdays = DataManager.shared.getBirthdays().map(BirthdayViewModel.init)
+        print("ЭТА СРОКА ИЗМЕНЕНА'")
     }
     
     func removeBirthday(at index: Int) {
