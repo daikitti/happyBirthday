@@ -5,6 +5,7 @@ import SwiftUI
 
 struct BirthdayCell: View {
     var birthdayVM: BirthdayViewModel
+    let notify = NotificationsHandler()
     @State private var updatePresented = false
     
     var body: some View {
@@ -62,6 +63,9 @@ struct BirthdayCell: View {
                     .padding([.vertical], 5)
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .onAppear {
+                        notify.sendNotification(date: Date(), type: "time", timeInterval: 15, title: "AAAA", body: "ddddd")
+                    }
                 } else {
                     Text("Через \(birthdayVM.remainingDays) дней")
                         .autoSize()
@@ -82,6 +86,8 @@ struct BirthdayCell: View {
             
     }
 }
+
+
 
 extension Color {
     static var random: Color {

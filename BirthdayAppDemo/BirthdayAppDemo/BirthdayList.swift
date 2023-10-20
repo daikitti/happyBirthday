@@ -6,6 +6,7 @@ import SwiftUI
 struct BirthdayList: View {
     @ObservedObject var birthdayVM = BirthdayListViewModel()
     @State private var addNewPresented = false
+    let notify = NotificationsHandler()
     
     init() {
         UITableView.appearance().tableFooterView = UIView()
@@ -55,6 +56,8 @@ struct BirthdayList: View {
                     .padding(-30)
             }.onAppear {
                 self.refreshData()
+                notify.askPermisson()
+                
             }
         .background(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .leading, endPoint: .trailing))
         .navigationBarHidden(true)
