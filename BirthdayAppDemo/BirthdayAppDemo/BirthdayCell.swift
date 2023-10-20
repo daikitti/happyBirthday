@@ -63,9 +63,7 @@ struct BirthdayCell: View {
                     .padding([.vertical], 5)
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .onAppear {
-                        notify.sendNotification(date: Date(), type: "time", timeInterval: 15, title: "AAAA", body: "ddddd")
-                    }
+                   
                 } else {
                     Text("Через \(birthdayVM.remainingDays) дней")
                         .autoSize()

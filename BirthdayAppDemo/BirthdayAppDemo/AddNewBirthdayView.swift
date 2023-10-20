@@ -8,10 +8,12 @@ class AddNewBdayData: ObservableObject {
     @Published var date: Date = Date()
 }
 
+
 struct AddNewBirthdayView: View {
     @Binding var addNewPresented: Bool
     @ObservedObject var newData = AddNewBdayData()
     private let viewModel = AddNewBirthdayViewModel()
+    let notify = NotificationsHandler()
     
     var body: some View {
         VStack {
@@ -72,6 +74,17 @@ struct AddNewBirthdayView: View {
     
     func addNew() {
         let birthday = BirthdayViewModel(id: UUID(), name: newData.name, date: newData.date)
+        notify.sendNotification(date: newData.date, 
+                                type: "time",
+                                timeInterval: 31536000, //1 год 
+                                title: "\(newData.name) празднует День Рождения!" ,
+                                body: "Не забудте поздравить!")
+        
+        
+        notify.sendNotification(date: newData.date, 
+                                type: "date",
+                                title: "\(newData.name) празднует День Рождения!",
+                                body: "Не забудте поздравить!")
         viewModel.saveBirthday(birthday: birthday)
         addNewPresented.toggle()
             

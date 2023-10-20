@@ -2,11 +2,11 @@
 
 
 import SwiftUI
-
+let notify = NotificationsHandler()
 struct BirthdayList: View {
     @ObservedObject var birthdayVM = BirthdayListViewModel()
     @State private var addNewPresented = false
-    let notify = NotificationsHandler()
+    
     
     init() {
         UITableView.appearance().tableFooterView = UIView()
@@ -30,8 +30,12 @@ struct BirthdayList: View {
                                 self.refreshData()
                             }
                     }
+                    
+
                 }
                 List {
+                    
+                    
                     ForEach(self.birthdayVM.birthdays.indices, id: \.self) {idx in
                         ZStack {
                             BirthdayCell(birthdayVM: self.birthdayVM.birthdays[idx]).shadow(radius: 10)
@@ -54,18 +58,24 @@ struct BirthdayList: View {
                 }.listRowSeparator(.hidden)
                     .scrollContentBackground(.hidden)
                     .padding(-30)
+                
+              
             }.onAppear {
                 self.refreshData()
-                notify.askPermisson()
                 
             }
         .background(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .leading, endPoint: .trailing))
         .navigationBarHidden(true)
             .navigationBarTitle("", displayMode: .inline)
             
+          
+           
             
         }.edgesIgnoringSafeArea(.all)
             .background(.black)
+            .onAppear{
+                notify.askPermisson()
+            }
     }
     
     func delete(at offsets: IndexSet) {
@@ -88,6 +98,8 @@ struct BirthdayHeader: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, maxHeight: 60)
                 .background(Rectangle().fill(Color.clear))
+           
+            
         }.edgesIgnoringSafeArea(.all)
     }
 }

@@ -22,22 +22,24 @@ class NotificationsHandler {
         }
     }
     
-    func sendNotification(date: Date, type:String, timeInterval: Double = 10, title: String, body: String){
+    func sendNotification(date: Date, type:String, timeInterval: Double = 60, title: String, body: String){
         var trigger: UNNotificationTrigger?
         
         if type == "date"{
-            let dateComponents = Calendar.current.dateComponents([.day,.year,.hour,.minute], from: date)
-            trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let dateComponents = Calendar.current.dateComponents([.day,.month], from: date)
+            trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         }else if type == "time"{
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
             
         }
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = UNNotificationSound.default
+    
             
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger )
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger )
+        
         UNUserNotificationCenter.current().add(request)
         }
 }
