@@ -76,7 +76,7 @@ struct AddNewBirthdayView: View {
         let birthday = BirthdayViewModel(id: UUID(), name: newData.name, date: newData.date)
         notify.sendNotification(date: newData.date, 
                                 type: "time",
-                                timeInterval: 31536000, //1 год 
+                                timeInterval: 25200, //6 часов
                                 title: "\(newData.name) празднует День Рождения!" ,
                                 body: "Не забудте поздравить!")
         
@@ -85,6 +85,7 @@ struct AddNewBirthdayView: View {
                                 type: "date",
                                 title: "\(newData.name) празднует День Рождения!",
                                 body: "Не забудте поздравить!")
+        
         viewModel.saveBirthday(birthday: birthday)
         addNewPresented.toggle()
             

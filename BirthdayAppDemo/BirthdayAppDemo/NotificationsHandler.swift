@@ -29,7 +29,7 @@ class NotificationsHandler {
             let dateComponents = Calendar.current.dateComponents([.day,.month], from: date)
             trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         }else if type == "time"{
-            trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
             
         }
         let content = UNMutableNotificationContent()
