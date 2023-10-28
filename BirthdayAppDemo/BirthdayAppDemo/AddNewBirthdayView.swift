@@ -76,7 +76,7 @@ struct AddNewBirthdayView: View {
         let birthday = BirthdayViewModel(id: UUID(), name: newData.name, date: newData.date)
         notify.sendNotification(date: newData.date, 
                                 type: "time",
-                                timeInterval: 25200, //6 часов
+                                timeInterval: 28800, //8 часов
                                 title: "\(newData.name) празднует День Рождения!" ,
                                 body: "Не забудте поздравить!")
         
